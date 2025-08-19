@@ -1,46 +1,156 @@
-# Getting Started with Create React App
+📌 CRM Simplificado
+🗂 Geral do Projeto
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+💡 Nome: CRM Simplificado
 
-## Available Scripts
+🎯 Objetivo: Sistema para gerenciar clientes, atendimentos e usuários
 
-In the project directory, you can run:
+🛠 Funcionalidades:
 
-### `npm start`
+👥 Gestão de clientes (CRUD)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+📝 Gestão de atendimentos (CRUD)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+🔑 Gestão de usuários com roles: ADMIN, SELLER, ATTENDANT
 
-### `npm test`
+🛡 Sistema de permissões baseado em roles
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+📊 Dashboard e filtros dinâmicos
 
-### `npm run build`
+🔐 Autenticação JWT
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+🌗 Modo claro/escuro
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+⚡ Tecnologias:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Frontend: React, Material UI, styled-components, react-router-dom
 
-### `npm run eject`
+Backend: Node.js, Express, Prisma, PostgreSQL
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Autenticação: JWT + Roles
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Outras libs: bcrypt, react-toastify
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+⚙️ Backend
+💻 Instalação
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Clone o repositório:
 
-## Learn More
+git clone <REPO_URL>
+cd backend
+npm install
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+🛠 Configuração Inicial
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Crie .env:
+
+DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DB?schema=public"
+SEED_ADMIN_EMAIL=admin@example.com
+SEED_ADMIN_PASSWORD=Admin123!
+BCRYPT_SALT=10
+JWT_SECRET="sua_chave_secreta"
+
+
+Rodar migrações:
+
+npx prisma migrate dev
+
+
+Criar seed inicial do admin:
+
+npx prisma db seed
+
+
+Isso criará automaticamente um usuário ADMIN.
+
+🚀 Rodar servidor
+npm run dev
+
+
+Servidor disponível em: http://localhost:4000
+
+
+🔐 Sistema de Permissões
+
+ADMIN → acesso total, pode criar, editar, visualizar e deletar usuários
+
+SELLER → apenas visualiza usuários e atendimentos
+
+ATTENDANT → acesso restrito a atendimentos e clientes
+
+🖥 Frontend
+💻 Instalação
+
+npm install
+
+🛠 Configuração Inicial
+
+Criar .env:
+
+REACT_APP_API_URL=http://localhost:4000
+
+🚀 Rodar aplicação
+npm start
+
+
+Disponível em: http://localhost:3000
+
+🧩 Estrutura de Pastas
+
+/src
+
+/components → componentes reutilizáveis (Navbar, Modals)
+
+/pages → páginas (Customers, Attendance, Admin Panel)
+
+/context → AuthContext, ThemeContext
+
+/api → Axios setup
+
+/utils → helpers e tipagens
+
+⚡ Funcionalidades
+
+Navbar baseada no role do usuário
+
+Modals para criação, edição e visualização
+
+Filtros e busca em listas
+
+Notificações via Snackbar
+
+📦 Rodando o Projeto Completo
+
+Inicie o PostgreSQL
+
+Rodar Backend:
+
+npm install
+npx prisma migrate dev
+npx prisma db seed
+npm run dev
+
+
+Rodar Frontend:
+
+npm install
+npm start
+
+
+Acesse o sistema:
+
+Frontend: http://localhost:3000
+
+Backend: http://localhost:4000
+
+✅ Usuários de Teste
+
+Admin: SEED_ADMIN_EMAIL / SEED_ADMIN_PASSWORD
+
+Roles disponíveis:
+
+🛡 ADMIN → acesso total
+
+🏷 SELLER → apenas visualiza
+
+👨‍💻 ATTENDANT → atendimentos e clientes
